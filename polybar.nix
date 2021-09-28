@@ -187,7 +187,7 @@ in
         full-at = 100;
 
         # $ ls -1 /sys/class/power_supply/
-        battery = "BAT1";
+        battery = "BAT0";
         adapter = "ADP1";
         poll-interval = 5;
 

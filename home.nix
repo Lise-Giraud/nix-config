@@ -10,6 +10,11 @@ in
 {
   nixpkgs.config.allowUnfree = true;
 
+  imports = [
+    ./battery.nix
+    ./discord.nix
+  ];
+
   home.packages = with pkgs; [
     # Overview
     htop
@@ -17,30 +22,44 @@ in
     feh
     gnupg
     netcat
+    tree
+    pstree
 
      # Tools
     i3lock-fancy
     pavucontrol
     arandr
     gnome3.networkmanagerapplet
+    xfce.thunar
+    zip
+    wdiff
+    unzip
+    gtk3-x11
+    shutter
 
     # Dev tools
+    #clang
+    gcc
+    cmake
+    gnumake
+    gdb
     any-nix-shell
     gitAndTools.gitflow
     nodejs
-    maven
-    jdk11
-    jetbrains.idea-ultimate
+    #jetbrains.idea-ultimate
     vscode-with-extensions
     curl
     p7zip
+    libtensorflow-bin
+    jupyter
+    python38Packages.bottleneck
+
 
     # 4 school
     jetbrains.clion
-    gnumake
-    cmake
-    gcc
-    gdb
+    teams
+    jetbrains.pycharm-community
+    jetbrains.webstorm
 
     # Fonts
     font-awesome
@@ -48,15 +67,16 @@ in
     fira-code-symbols
 
     # Fun
-    #unstable.discord
     spotify
     brave
+    firefox
+    discord
   ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "vinetos";
-  home.homeDirectory = "/home/vinetos";
+  home.username = "Lise";
+  home.homeDirectory = "/home/lise";
 
   programs = {
     home-manager.enable = true;
@@ -66,8 +86,8 @@ in
 
     git = {
       enable = true;
-      userName = "Valentin Chassignol";
-      userEmail = "Vinetosdev"+"@"+"gmail"+"."+"com";
+      userName = "Lise Giraud";
+      userEmail = "lise.giraud"+"@"+"epita"+"."+"fr";
     };
   };
 
@@ -93,5 +113,5 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.09";
+  home.stateVersion = "21.05";
 }

@@ -67,8 +67,8 @@ in
       "Print" = "exec ${pkgs.shutter}/bin/shutter -s -e";
       
       # Brightness
-      "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
-      "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
+      "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 5";
+      "XF86MonBrightnessUp" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 5";
 
       # Audio
       "XF86AudioLowerVolume" = "exec \"amixer -q sset Master 1%-\"";
@@ -87,6 +87,11 @@ in
         command = "systemctl --user restart polybar";
         always = true;
       }
+
+	{
+		command = "${pkgs.i3-gaps}/bin/i3-msg workspace ${ws1}";
+        	always = true;
+	}
     ];
 
   };
