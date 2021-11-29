@@ -24,6 +24,7 @@ in
     netcat
     tree
     pstree
+    man-pages
 
      # Tools
     i3lock-fancy
@@ -36,10 +37,12 @@ in
     unzip
     gtk3-x11
     shutter
+    valgrind
+    flex
 
     # Dev tools
-    #clang
-    gcc
+    clang-tools
+    (hiPrio gcc) 
     cmake
     gnumake
     gdb
@@ -50,16 +53,19 @@ in
     vscode-with-extensions
     curl
     p7zip
-    libtensorflow-bin
-    jupyter
-    python38Packages.bottleneck
+    #libtensorflow-bin
+    #jupyter
+    #python38Packages.bottleneck
+    sbcl #lisp compiler
 
 
     # 4 school
     jetbrains.clion
     teams
-    jetbrains.pycharm-community
-    jetbrains.webstorm
+    #jetbrains.pycharm-community
+    #jetbrains.webstorm
+    bintools-unwrapped
+  
 
     # Fonts
     font-awesome
@@ -68,7 +74,7 @@ in
 
     # Fun
     spotify
-    brave
+    #brave
     firefox
     discord
   ];

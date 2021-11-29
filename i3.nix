@@ -2,8 +2,7 @@
 
 let
     wallpaper = builtins.fetchurl {
-      url = "https://wallpaperaccess.com/full/569813.png";
-      sha256 = "206cce815ed45a9b4176141fa500cc81165b16b195b13c10095844f5c9570a29";
+      url = "https://wallpaperaccess.com/full/4808321.jpg";
     };
 
    ws1 = "";
@@ -86,6 +85,12 @@ in
       {
         command = "systemctl --user restart polybar";
         always = true;
+      }
+
+      {
+        command = "xrandr --auto --output DP-2 --mode 1920x1080 --scale 1.25x1.25";
+        always = true;
+
       }
 
 	{

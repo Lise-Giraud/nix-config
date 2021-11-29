@@ -15,6 +15,7 @@
     set autoindent
     set smartindent
     set nocompatible
+    set mouse=a
     
     """"""""""""""""""""""""""""""""""""""
     " => File explorer   
@@ -49,6 +50,14 @@
 
     " reload vim.rc
     nnoremap <Leader>vr :source $MYVIMRC<CR>	" reload
+    
+    """
+    " Auto reformat clang
+    """
+    autocmd FileType c ClangFormatAutoEnable
+    let g:clang_format#auto_format = 1
+    let g:clang_format#detect_style_file = 1
+    let g:clang_format#enable_fallback_style = 0
   '';
 
   plugins = with pkgs.vimPlugins; [ 
@@ -57,10 +66,13 @@
     vim-airline-themes
     lightline-vim
     vim-devicons
+    vim-clang-format
+    ayu-vim
     nerdtree
     fzf-vim
     coc-nvim
     coc-pairs
     coc-yaml
+    DoxygenToolkit-vim
   ];
 }
