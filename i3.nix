@@ -25,10 +25,10 @@ in
     modifier = "Mod4";
     bars = [];
 		
-    window.border = 0;
+    window.border = 3;
 		
     gaps = {
-      inner = 12;
+      inner = 0;
       outer = 0;
     };
     

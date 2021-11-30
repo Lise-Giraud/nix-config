@@ -108,9 +108,6 @@ in
       enableSshSupport = true;
       pinentryFlavor = "curses";
     };
-    picom = {
-      enable = true;
-    };
   };
 
   xsession.windowManager.i3 = import ./i3.nix {inherit pkgs lib; };
