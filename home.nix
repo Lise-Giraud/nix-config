@@ -79,6 +79,7 @@ in
     discord
   ];
 
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "Lise";
@@ -106,6 +107,9 @@ in
 
       enableSshSupport = true;
       pinentryFlavor = "curses";
+    };
+    picom = {
+      enable = true;
     };
   };
 

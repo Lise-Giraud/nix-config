@@ -20,6 +20,8 @@
       };
     };
 
+    background_opacity = 0.85;
+
     font = {
       normal.family = "Fira Code";
       normal.style = "Regular";
