@@ -2,7 +2,7 @@
 
 let
     wallpaper = builtins.fetchurl {
-      url = "https://wallpaperaccess.com/full/4808321.jpg";
+      url = "https://images2.alphacoders.com/933/933466.png";
     };
 
    ws1 = "";

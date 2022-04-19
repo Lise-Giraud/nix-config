@@ -30,7 +30,7 @@ in
     i3lock-fancy
     pavucontrol
     arandr
-    gnome3.networkmanagerapplet
+    networkmanagerapplet
     xfce.thunar
     zip
     wdiff
@@ -39,6 +39,10 @@ in
     shutter
     valgrind
     flex
+    postgresql
+    gnome.gnome-bluetooth
+    gtest
+    bison
 
     # Dev tools
     clang-tools
@@ -49,7 +53,7 @@ in
     any-nix-shell
     gitAndTools.gitflow
     nodejs
-    #jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     vscode-with-extensions
     curl
     p7zip
@@ -57,14 +61,21 @@ in
     #jupyter
     #python38Packages.bottleneck
     sbcl #lisp compiler
+    python38
+    maven #Java compiler
+    postman
+    docker
+    docker-compose
 
 
     # 4 school
     jetbrains.clion
-    teams
+    #teams
     #jetbrains.pycharm-community
     #jetbrains.webstorm
     bintools-unwrapped
+    thunderbird
+    jdk
   
 
     # Fonts
@@ -79,7 +90,6 @@ in
     discord
   ];
 
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "Lise";
@@ -89,6 +99,7 @@ in
     home-manager.enable = true;
     neovim = import ./nvim.nix { inherit pkgs; };
 
+    fish = import ./fish.nix { inherit pkgs; };
     alacritty = import ./alacritty.nix { inherit pkgs; };    
 
     git = {
@@ -99,7 +110,19 @@ in
   };
 
   fonts.fontconfig.enable = true;
-  
+
+    gtk = {
+      enable = true;
+      iconTheme = {
+        name = "BeautyLine";
+        package = pkgs.beauty-line-icon-theme;
+      };
+      theme = {
+        name = "Juno-ocean";
+        package = pkgs.callPackage ./juno {};
+      };
+    };
+
   services = {
     polybar = import ./polybar.nix { inherit pkgs; };
     gpg-agent = {
