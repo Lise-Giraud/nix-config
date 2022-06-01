@@ -28,6 +28,11 @@
       size = 10.0;
     };
 
+  #Download patched fonts from nerd fonts to use glyphs in the terminal
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "Iosevka" ]; })
+    ];
+
     cursor.style = "Beam";
 
     shell = {

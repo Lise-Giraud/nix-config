@@ -13,6 +13,7 @@ in
   imports = [
     ./battery.nix
     ./discord.nix
+    ./polybar/shapes/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -36,7 +37,7 @@ in
     wdiff
     unzip
     gtk3-x11
-    shutter
+    flameshot
     valgrind
     flex
     postgresql
@@ -66,12 +67,13 @@ in
     postman
     docker
     docker-compose
+    nlohmann_json #json parser
 
 
     # 4 school
     jetbrains.clion
     #teams
-    #jetbrains.pycharm-community
+    jetbrains.pycharm-community
     #jetbrains.webstorm
     bintools-unwrapped
     thunderbird
@@ -79,9 +81,8 @@ in
   
 
     # Fonts
-    font-awesome
-    fira-code
-    fira-code-symbols
+    unstable.font-awesome
+    #feather
 
     # Fun
     spotify
@@ -100,7 +101,8 @@ in
     neovim = import ./nvim.nix { inherit pkgs; };
 
     fish = import ./fish.nix { inherit pkgs; };
-    alacritty = import ./alacritty.nix { inherit pkgs; };    
+    alacritty = import ./alacritty.nix { inherit pkgs; };
+    rofi = import ./rofi/rofi.nix { inherit pkgs; inherit config; };
 
     git = {
       enable = true;
@@ -123,16 +125,6 @@ in
       };
     };
 
-  services = {
-    polybar = import ./polybar.nix { inherit pkgs; };
-    gpg-agent = {
-      enable = true;
-
-      enableSshSupport = true;
-      pinentryFlavor = "curses";
-    };
-  };
-
   xsession.windowManager.i3 = import ./i3.nix {inherit pkgs lib; };
 
   # This value determines the Home Manager release that your
@@ -143,5 +135,5 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  home.stateVersion = "21.11";
 }
