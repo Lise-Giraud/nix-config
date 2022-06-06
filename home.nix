@@ -105,10 +105,10 @@ in
   programs = {
     home-manager.enable = true;
     neovim = import ./nvim.nix { inherit pkgs; };
-
     fish = import ./fish.nix { inherit pkgs; };
     alacritty = import ./alacritty.nix { inherit pkgs; };
     rofi = import ./rofi/rofi.nix { inherit pkgs; inherit config; };
+    starship = import ./starship/starship.nix;
 
     git = {
       enable = true;
