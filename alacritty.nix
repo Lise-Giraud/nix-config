@@ -8,17 +8,18 @@
     live_config_reload = true;
 
     window = {
-      title = "Terminal";
+        title = "Terminal";
 
-      opacity = 0.85;
-      position = {
-        x = 900;
-        y = 350;
-      };
-      dimensions = {
-        lines = 40;
-        columns = 125;
-      };
+        opacity = 0.85;
+        position = {
+            x = 900;
+            y = 350;
+        };
+
+        dimensions = {
+            lines = 40;
+            columns = 125;
+        };
     };
 
 
@@ -70,5 +71,5 @@
         white   = "0xFCFCFA";
       };
     };
-  };
+};
 }

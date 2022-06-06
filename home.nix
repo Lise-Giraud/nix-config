@@ -26,6 +26,7 @@ in
     tree
     pstree
     man-pages
+    zsh
 
      # Tools
     i3lock-fancy
@@ -95,6 +96,11 @@ in
   # paths it should manage.
   home.username = "Lise";
   home.homeDirectory = "/home/lise";
+
+  services = {
+      picom.enable = true;
+  };
+
 
   programs = {
     home-manager.enable = true;
