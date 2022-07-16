@@ -10,7 +10,7 @@
     window = {
         title = "Terminal";
 
-        opacity = 0.85;
+        opacity = 0.90;
         position = {
             x = 900;
             y = 350;

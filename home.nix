@@ -45,6 +45,7 @@ in
     gnome.gnome-bluetooth
     gtest
     bison
+    libreoffice
 
     # Dev tools
     clang-tools
@@ -69,13 +70,15 @@ in
     docker
     docker-compose
     nlohmann_json #json parser
+    javaPackages.openjfx17
+    scenebuilder
 
 
     # 4 school
     jetbrains.clion
     #teams
     jetbrains.pycharm-community
-    #jetbrains.webstorm
+    jetbrains.webstorm
     bintools-unwrapped
     thunderbird
     jdk
