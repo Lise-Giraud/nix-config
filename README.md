@@ -1,4 +1,4 @@
-# Vinetos's nix user configuration
+# Lise's nix user configuration
 
 ## Requirements
 
