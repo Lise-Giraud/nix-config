@@ -50,6 +50,8 @@ in
       #shutter
       sway-contrib.grimshot
       slurp
+      wl-clipboard
+      libnotify
       curl
       p7zip
       firefox
@@ -116,6 +118,7 @@ in
 
       # Fun
       discord
+      spotify
     ];
 
     fonts.fontconfig.enable = true;
