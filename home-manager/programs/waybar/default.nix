@@ -4,11 +4,12 @@
     enable = true;
     systemd.enable = true;
 
-    package = pkgs.waybar.overrideAttrs (oa: {
+    package = pkgs.waybar-hyprland.overrideAttrs (oa: {
     mesonFlags = (oa.mesonFlags or  [ ]) ++ [ "-Dexperimental=true" ];
   });
 
     settings = [{
+    #exec-once = "/home/lise/scripts/autostart";  
     layer = "top"; # Waybar at top layer
     position = "top"; # Waybar position (top|bottom|left|right)
     height = 50; # Waybar height (to be removed for auto height)
@@ -20,34 +21,42 @@
     margin-bottom  = -11;
     # "margin-top":5,
     modules-left = ["wlr/workspaces"];
-    modules-right = ["temperature" "network" "battery" "custom/ss" "custom/cycle_wall" "custom/expand" "cpu" "clock"];
+    modules-right = ["temperature" "network" "battery" "custom/ss" "custom/cycle_wall" "memory" "cpu" "clock"];
     modules-center = ["custom/dynamic_pill"];
 
     # custom modules
 
     "custom/dynamic_pill" = {
         return-type = "json";
-        exec = " /home/lise/scripts/tools/start_dyn";
+        #exec = " /home/lise/scripts/tools/start_dyn";
         escape = true;
       };
 
     "custom/ss" = {
       format = "{}";
       exec = "/home/lise/scripts/tools/expand ss-icon";
-      on-click = "/home/lise/scripts/screenshot_full";
+      on-click = ''
+        ${pkgs.sway-contrib.grimshot}/bin/grimshot -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.wl-clipboard}/bin/wl-copy
+        ${pkgs.libnotify}/bin/notify-send  "Screenshot copied to clipboard" -a "ss"
+      ''; 
     };
 
     "custom/cycle_wall" = {
       format = "{}";
       exec = "/home/lise/scripts/tools/expand wall";
       # interval = 1;
-      on-click = "/home/lise/scripts/tools/expand cycle";
+      on-click = ''
+        R=$(($(($RANDOM%9))+1))
+        ${pkgs.swww}/bin/swww init
+        ${pkgs.swww}/bin/swww img /home/lise/wallpaper/$R.jpg --transition-type grow --transition-duration 3
+      '';
+
     };
 
     "custom/expand" = {
-      on-click = "/home/lise/scripts/expand_toolbar";
+      #on-click = "/home/lise/scripts/expand_toolbar";
       format = "{}";
-      exec = "/home/lise/scripts/tools/expand arrow-icon";
+      #exec = "/home/lise/scripts/tools/expand arrow-icon";
     };
 
     "keyboard-state" = {
@@ -122,21 +131,24 @@
     };
 
     cpu = {
-      interval = 1;
+      interval = 0.1;
       format = "{icon0} {icon1} {icon2} {icon3}";
       format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
     };
 
     memory = {
       format = "{}% ";
+      interval = 5;
+      enable = true;
     };
 
     temperature = {
       #thermal-zone = 2;
       #hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
       critical-threshold = 80;
-      format-critical = "{temperatureC}°C";
-      format = "";
+      format-critical = " {temperatureC}°C";
+      format = " {temperatureC}°C";
+      interval = 1;
     };
 
     backlight = {
@@ -147,26 +159,28 @@
 
     battery = {
       states = {
-        warning = 50;
+        warning = 40;
         critical = 20;
       };
-      format = "{icon}";
-      format-charging = "";
-      format-plugged = "";
+      format = "{icon} {capacity}%";
+      format-charging = "󰂄 {capacity}%";
+      format-plugged = "󰂄 {capacity}%";
       #format-good = ""; # An empty format will hide the module
       #format-full = "";
-      format-icons = ["" "" "" "" ""];
+      format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+      interval = 10;
     };
-
-    #battery#bat2 = {
-    #  bat = "BAT2";
-    #};
 
     network = {
       #interface = "wlp2*"; # (Optional) To force the use of this interface
-      format-wifi = "";
-      format-ethernet = "";
-      tooltip-format = "via {gwaddr} {ifname}";
+      format-wifi = "   {essid}";
+      format-ethernet = "󰈁 Connected";
+      tooltip-format = "
+            {ifname}
+            {ipaddr}/{cidr}
+            Up: {bandwidthUpBits}
+            Down: {bandwidthDownBits}";
+            on-click = "";
       format-linked = "";
       format-disconnected = "wifi";
       format-alt = "   ";

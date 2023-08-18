@@ -9,7 +9,7 @@ in {
     enable = true;
     extraConfig = ''
 
-    exec-once=/home/lise/scripts/autostart
+    #exec-once=/home/lise/scripts/autostart
     monitor=eDP-1, preferred, auto, 1
 
     input {
@@ -40,20 +40,23 @@ in {
   }
 
   decoration {
-      blur_new_optimizations = true
+      #blur_new_optimizations = true
       drop_shadow = true
       shadow_range=100
       shadow_render_power=5
       col.shadow= 0x33000000
       col.shadow_inactive=0x22000000
       rounding=15
-      blur=0
-      blur_size=1 # minimum 1
-      blur_passes=1 # minimum 1, more passes = more resource intensive.
-      # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
-      # if you want heavy blur, you need to up the blur_passes.
-      # the more passes, the more you can up the blur_size without noticing artifacts.
-  }
+      blur {
+        new_optimizations = true
+        #blur=1
+        size=1 # minimum 1
+        passes=1 # minimum 1, more passes = more resource intensive.
+        # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
+        # if you want heavy blur, you need to up the blur_passes.
+        # the more passes, the more you can up the blur_size without noticing artifacts.
+        }
+      }
 
   animations {
       enabled=1
@@ -113,7 +116,8 @@ in {
   bind=ALT,s,exec,grimblast --notify copy area
 
   
-  bind=SUPER,X,exec,/home/lise/scripts/lock
+  bind=SUPER,x,exec,swaylock -S
+  bind=SUPER,backspace,exec,swaylock -S
 
   bind=SUPER,left,movefocus,l
   bind=SUPER,right,movefocus,r

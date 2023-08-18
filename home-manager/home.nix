@@ -96,7 +96,7 @@ in
       #stm32cubemx
       #stlink
       github-copilot-intellij-agent
-      jq
+      jq #JSON parser
 
       # 4 school
       jetbrains.clion

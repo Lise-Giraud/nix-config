@@ -4,6 +4,7 @@
   inputs = # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
+      nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
       home-manager = { # User Package Management
         url = "github:nix-community/home-manager";
@@ -30,6 +31,7 @@
         framework = lib.nixosSystem {
          inherit system;
          modules = [
+           inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
            hyprland.nixosModules.default
             ./framework/configuration.nix
             home-manager.nixosModules.home-manager {
