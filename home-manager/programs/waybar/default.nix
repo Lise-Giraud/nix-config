@@ -438,7 +438,8 @@ style = ''
   }
 
   #battery.charging, #battery.plugged {
-    background-color: #94e2d5 ;
+    /*background-color: #94e2d5 ;*/
+    background-color: #11111b;
   }
 
   #battery {

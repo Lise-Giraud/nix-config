@@ -2,16 +2,13 @@
 
 let
   colors = import ./colorscheme.nix;
-  feather-icons = builtins.fetchurl {
-    url = "https://github.com/adi1090x/polybar-themes/blob/46154c5283861a6f0a440363d82c4febead3c818/fonts/panels/icomoon_feather.ttf?raw=true";
-    sha256 = "d74dc222a0ee04ebd2a169fed8eb437692a98833c06534f5450400fd024a9bbb";
-  };
 in
   {
     imports = [
       ./services/battery.nix
       ./discord.nix
       #./programs/polybar/polybar.nix
+      ./programs/hyprland/hyprpaper.nix
     ];
 
     # Home Manager needs a bit of information about you and the
@@ -55,6 +52,7 @@ in
       curl
       p7zip
       firefox
+      swaylock-effects
       #kicad
 
       # Dev tools
@@ -132,6 +130,7 @@ in
       starship = import ./programs/starship/starship.nix;
       git = import ./programs/git/git.nix { inherit pkgs; };
       waybar = import ./programs/waybar { inherit pkgs; inherit lib; };
+      swaylock = import ./programs/swaylock { inherit config pkgs; };
     };
 
     services = {
