@@ -4,33 +4,33 @@ let
   wallpaper = "/home/lise/Pictures/desktop-cube-04.jpg";
   lock = "/home/lise/Pictures/lock.jpg";
 
-   ws1 = "";
-   ws2 = "";
-   ws3 = "";
-   ws4 = "";
-   ws5 = "";
-   ws6 = "";
-   ws7 = "";
-   ws8 = "";
-   ws9 = "";
-   ws0 = "";
+  ws1 = "";
+  ws2 = "";
+  ws3 = "";
+  ws4 = "";
+  ws5 = "";
+  ws6 = "";
+  ws7 = "";
+  ws8 = "";
+  ws9 = "";
+  ws0 = "";
 
 in
 {
   enable = true;
   package = pkgs.i3-gaps;
-  
+
   config = rec {
     modifier = "Mod4";
-    bars = [];
-		
+    bars = [ ];
+
     window.border = 3;
-		
+
     gaps = {
       inner = 0;
       outer = 0;
     };
-    
+
     keybindings = lib.mkOptionDefault {
       "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
       "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -modi drun -show drun";
@@ -64,7 +64,7 @@ in
       # Brightness
       "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 5";
       "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
-      
+
       # Audio
       "XF86AudioLowerVolume" = "exec \"amixer -q sset Master 1%-\"";
       "XF86AudioRaiseVolume" = "exec \"amixer -q sset Master 1%+\"";
@@ -79,27 +79,27 @@ in
       }
 
       {
-          command = "systemctl --user restart polybar";
-          always = true;
+        command = "systemctl --user restart polybar";
+        always = true;
       }
 
       {
-          command = "xrandr --auto --output DP-2 --mode 1920x1080 --scale 1.25x1.25";
-          always = true;
+        command = "xrandr --auto --output DP-2 --mode 1920x1080 --scale 1.25x1.25";
+        always = true;
       }
 
       {
-          command = "${pkgs.i3-gaps}/bin/i3-msg workspace ${ws1}";
-          always = true;
+        command = "${pkgs.i3-gaps}/bin/i3-msg workspace ${ws1}";
+        always = true;
       }
       {
         command = "${pkgs.betterlockscreen}/bin/betterlockscreen -u ${lock}";
       }
     ];
 
-};
+  };
 
-extraConfig = ''
+  extraConfig = ''
     # Remove border
     for_window [class=".*"] border none;
   '';

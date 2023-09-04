@@ -1,11 +1,11 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
 {
   enable = true;
 
   # User config
   userName = "Lise Giraud";
-  userEmail = "lise.giraud"+"@"+"epita"+"."+"fr";
+  userEmail = "lise.giraud" + "@" + "epita" + "." + "fr";
 
   # Extra Config
   extraConfig = {

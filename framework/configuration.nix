@@ -7,7 +7,8 @@
 {
   #nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -45,9 +46,9 @@
   };
   console.keyMap = "us";
 
-# Configure keymap in X11
- programs.hyprland.enable = true;
- services.xserver = {
+  # Configure keymap in X11
+  programs.hyprland.enable = true;
+  services.xserver = {
     enable = true;
     exportConfiguration = true;
     displayManager.gdm.enable = true;
@@ -108,6 +109,14 @@
       enableSSHSupport = true;
     };
   };
+
+  # allow swaylock look into pam for unlocking
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
 
   # List services that you want to enable:
 

@@ -1,15 +1,16 @@
-{pkgs, ...} :
+{ pkgs, ... }:
 
-let 
-  monitor='',preferred,auto,1'';
+let
+  monitor = '',preferred,auto,1'';
   term = "${pkgs.alacritty}/bin/alacritty";
   dmenu = "${pkgs.rofi}/bin/rofi -modi drun -show drun -show-icons";
+  #dmenu = "${pkgs.wofi}/bin/wofi wofi --show drun";
 
-in {
-    enable = true;
-    extraConfig = ''
+in
+{
+  enable = true;
+  extraConfig = ''
 
-    #exec-once=/home/lise/scripts/autostart
     monitor=eDP-1, preferred, auto, 1
 
     input {
@@ -80,6 +81,8 @@ in {
       workspace_swipe=yes
       workspace_swipe_fingers=4
   }
+
+  exec-once=swayidle -w
 
   # example window rules
   # for windows named/classed as abc and xyz

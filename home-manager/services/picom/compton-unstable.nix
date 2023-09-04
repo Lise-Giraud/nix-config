@@ -1,6 +1,21 @@
-{ stdenv, fetchFromGitHub, meson, ninja, pkgconfig, cmake, libev, libX11
-, xcbutilrenderutil, xcbutilimage, libXext, pixman, uthash, libconfig, pcre
-, libGL, dbus }:
+{ stdenv
+, fetchFromGitHub
+, meson
+, ninja
+, pkgconfig
+, cmake
+, libev
+, libX11
+, xcbutilrenderutil
+, xcbutilimage
+, libXext
+, pixman
+, uthash
+, libconfig
+, pcre
+, libGL
+, dbus
+}:
 
 stdenv.mkDerivation {
   pname = "compton-unstable";

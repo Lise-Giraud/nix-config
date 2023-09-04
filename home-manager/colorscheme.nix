@@ -3,26 +3,26 @@ rec {
 
   # Basics "beach" colorscheme
   dark = {
-    black   = "#403E41";
-    red     = "#EF5046";
-    green   = "#075AA3";
-    yellow  = "#FCCE57";
-    blue    = "#83F1FD";
+    black = "#403E41";
+    red = "#EF5046";
+    green = "#075AA3";
+    yellow = "#FCCE57";
+    blue = "#83F1FD";
     magenta = "#E477F2";
-    brown   = "#9F4D25";
-    white   = "#FCFCFA";
+    brown = "#9F4D25";
+    white = "#FCFCFA";
   };
 
   # Basics "beach" colorscheme (light version)
   light = {
-    black   = "#403E41";
-    red     = "#EF5046";
-    green   = "#075AA3";
-    yellow  = "#FCCE57";
-    blue    = "#83F1FD";
+    black = "#403E41";
+    red = "#EF5046";
+    green = "#075AA3";
+    yellow = "#FCCE57";
+    blue = "#83F1FD";
     magenta = "#E477F2";
-    brown   = "#9F4D25";
-    white   = "#FCFCFA";
+    brown = "#9F4D25";
+    white = "#FCFCFA";
   };
 
   # Shades of accent color

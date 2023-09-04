@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  wallpaper = /home/lise/wallpaper/4.jpg;
+  wallpaper = /home/lise/wallpaper/2.jpg;
 in
 {
 

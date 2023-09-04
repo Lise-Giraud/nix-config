@@ -54,8 +54,8 @@
       languageserver = {
         nix = {
           command = "rnix-lsp";
-          filetypes = ["nix"];
-          rootPatterns = ["flake.nix"];
+          filetypes = [ "nix" ];
+          rootPatterns = [ "flake.nix" ];
         };
       };
     };
@@ -104,10 +104,10 @@
     syntax on
     set t_Co=256
     set termguicolors
-    "palenight
+    "sonokai
     set background=dark
-    colorscheme palenight
-    let g:airline_theme = "palenight"
+    colorscheme sonokai
+    let g:airline_theme = "sonokai"
 
     """""""""""""""""""""""""""""""""""""""
     " => Keymaps
@@ -148,11 +148,12 @@
     let g:NERDSpaceDelims = 1
     '';
 
-    plugins = with pkgs.vimPlugins; [  
+  plugins = with pkgs.vimPlugins; [
     # Themes
     vim-airline
     vim-airline-themes
     palenight-vim
+    sonokai
     # Utility
     vim-polyglot
     rainbow
@@ -161,7 +162,7 @@
     vim-clang-format
     nerdtree
     nerdcommenter
-    fzf-vim 
+    fzf-vim
     coc-pairs
     coc-clangd
     coc-markdownlint
@@ -178,6 +179,6 @@
     copilot-vim
     DoxygenToolkit-vim
   ];
-  
+
 }
 
